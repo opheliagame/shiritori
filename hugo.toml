@@ -1,0 +1,3 @@
+baseURL = 'https://opheliagame.github.io/'
+languageCode = 'en-us'
+title = 'しりとり'

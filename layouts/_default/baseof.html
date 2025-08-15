@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>
+      {{ or .Title .Site.Title }}{{ if ne .Kind "home" }}
+        |
+        {{ .CurrentSection.Title }}
+      {{ end }}
+    </title>
+
+    {{ $color_theme := resources.Get "css/colors.css" | minify }}
+    <link rel="stylesheet" href="{{ $color_theme.RelPermalink }}" />
+    {{ $style := resources.Get "scss/style.scss" | toCSS | minify }}
+    <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
+
+    {{ $color_theme_js := resources.Get "js/color-theme.js" }}
+    <script
+      type="text/javascript"
+      src="{{ $color_theme_js.RelPermalink }}"
+      defer
+    ></script>
+  </head>
+  <body>
+    {{ block "page" . }}{{ end }}
+  </body>
+</html>
