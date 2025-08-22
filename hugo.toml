@@ -1,4 +1,4 @@
-baseURL = 'https://opheliagame.github.io/'
+baseURL = 'https://opheliagame.github.io/shiritori'
 languageCode = 'en-us'
 title = 'shiritori'
 [caches]

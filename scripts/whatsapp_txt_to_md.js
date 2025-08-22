@@ -66,7 +66,7 @@ async function processFile() {
 
       if (attachment) {
         // Construct the image tag with a relative path and alt text
-        const imagePath = "/messages/images/" + content.trim(); // Assumes the file name is in the content
+        const imagePath = "./messages/images/" + content.trim(); // Assumes the file name is in the content
         const altText = `at ${messageDateGMT.toDateString()} ${sender} says`;
         messageContent = `![${altText}](${imagePath})\n\n`;
       } else {
