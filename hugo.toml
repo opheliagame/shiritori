@@ -1,6 +1,8 @@
 baseURL = 'https://opheliagame.github.io/'
 languageCode = 'en-us'
-title = 'しりとり'
+title = 'shiritori'
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+[frontmatter]
+  date = ['created-at', ':default']

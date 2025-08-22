@@ -1,0 +1,31 @@
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>
+    {{ or .Title .Site.Title }}{{ if ne .Kind "home" }}
+      |
+      {{ .CurrentSection.Title }}
+    {{ end }}
+  </title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Mono:ital,wght@0,200..800;1,200..800&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+    rel="stylesheet"
+  />
+
+  {{ $normalize_css := resources.Get "css/normalize.css" | minify }}
+  <link rel="stylesheet" href="{{ $normalize_css.RelPermalink }}" />
+  {{ $color_theme := resources.Get "css/colors.css" | minify }}
+  <link rel="stylesheet" href="{{ $color_theme.RelPermalink }}" />
+  {{ $style := resources.Get "scss/style.scss" | toCSS | minify }}
+  <link rel="stylesheet" href="{{ $style.RelPermalink }}" />
+
+  {{ $color_theme_js := resources.Get "js/color-theme.js" }}
+  <script
+    type="text/javascript"
+    src="{{ $color_theme_js.RelPermalink }}"
+    defer
+  ></script>
+</head>

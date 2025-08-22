@@ -46,35 +46,26 @@
   color-scheme: light;
 }
 
-/*  ["#6495ed", "#ff4500", "#00fa9a", "#ffcc00", "#ff69b4"], */
 :root[saved-theme="light"] {
-  --light: #ebfff0; /* Airy mint background */
-  --lightgray: #c5ffdb; /* Soft lime */
-  --gray: #74e291; /* Vibrant green */
-  --darkgray: #2d9d5c; /* Medium emerald */
-  --dark: #174029; /* Deep forest */
-  --secondary: #ff1493; /* Deep pink */
-  --tertiary: #d373ff; /* Bright magenta-purple */
-  --highlight: rgba(255, 20, 147, 0.15);
-}
-
-:root {
-  --cornflowerblue: #6495ed;
-  --orangered: #ff4500;
-  --mediumspringgreen: #00fa9a;
-  --gold: #ffcc00;
-  --hotpink: #ff69b4;
+  --light: #f6f2e7; /* Warm rice paper (washi) beige */
+  --lightgray: #e2d7c5; /* Sandstone / muted khaki */
+  --gray: #b9a88f; /* Earthy taupe (like temple stone) */
+  --darkgray: #6e5c43; /* Deep brown (wood/bronze) */
+  --dark: #2c2418; /* Charcoal ink / soot */
+  --secondary: #c83737; /* Vermilion red (torii gates / sindoor) */
+  --tertiary: #3f6b91; /* Indigo blue (Japanese aizome / Indian indigo) */
+  --highlight: rgba(200, 55, 55, 0.15); /* Soft red glow */
 }
 
 :root[saved-theme="dark"] {
-  --light: #0c2614; /* Rich dark green */
-  --lightgray: #1a4027; /* Dark emerald */
-  --gray: #35964b; /* Medium green */
-  --darkgray: #84ffa8; /* Bright mint */
-  --dark: #ddffea; /* Pale mint */
-  --secondary: #ff47b6; /* Electric pink */
-  --tertiary: #b73fff; /* Vivid magenta */
-  --highlight: rgba(255, 71, 182, 0.15);
+  --light: #1c1a16; /* Charcoal black (ink) */
+  --lightgray: #2a2620; /* Burnt umber */
+  --gray: #4b4437; /* Deep earthy brown */
+  --darkgray: #c8bfae; /* Sandstone gray */
+  --dark: #f2ecde; /* Pale rice paper */
+  --secondary: #e85d5d; /* Brighter vermilion */
+  --tertiary: #5a8fb8; /* Lighter indigo blue */
+  --highlight: rgba(232, 93, 93, 0.15); /* Gentle vermilion highlight */
 }
 
 ::-webkit-scrollbar {
@@ -93,14 +84,14 @@ body {
 }
 
 ::selection {
-  /* background-color: color-mix(
+  background-color: color-mix(
     in srgb,
     var(--tertiary) 20%,
     rgba(255, 255, 255, 0)
-  ); */
+  );
   /* background-color: var(--highlight); */
-  background-color: color-mix(in srgb, var(--tertiary), transparent 60%);
-  color: var(--darkgray);
+  /* background-color: color-mix(in srgb, var(--tertiary), transparent 60%);
+  color: var(--darkgray); */
 }
 
 p,

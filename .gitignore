@@ -10,3 +10,5 @@ hugo_stats.json
 
 # Prettier
 /.prettierrc
+
+.DS_Store
