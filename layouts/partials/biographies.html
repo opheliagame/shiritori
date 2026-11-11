@@ -1,0 +1,21 @@
+{{ with .Params.biographies }}
+  {{ range $index, $biography := . }}
+    <section class="content-page biographies" aria-label="{{ if eq $index 0 }}About nekoyama{{ else }}About opheliagame{{ end }}">
+      {{ if eq $index 1 }}
+        <div class="content-page-item">
+          {{ $portrait := resources.Get "images/opheliagame.png" }}
+          <img src="{{ $portrait.RelPermalink }}" alt="Anushka Trivedi / opheliagame" />
+        </div>
+      {{ end }}
+      <div class="content-page-item">
+        <p>{{ $biography }}</p>
+      </div>
+      {{ if eq $index 0 }}
+        <div class="content-page-item">
+          {{ $portrait := resources.Get "images/nekoyama.png" }}
+          <img src="{{ $portrait.RelPermalink }}" alt="Shingo Ne Koyama / nekoyama" />
+        </div>
+      {{ end }}
+    </section>
+  {{ end }}
+{{ end }}

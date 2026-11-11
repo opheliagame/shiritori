@@ -1,0 +1,21 @@
+<section class="full-viewport intro-segment {{ if eq . "closing" }}closing-segment{{ end }}">
+  <div class="title-pattern" aria-hidden="true">
+    {{ range $row := seq 0 7 }}
+      <div class="pattern-row">
+        {{ range seq 6 }}
+          <div class="pattern-word {{ if eq (mod $row 2) 0 }}pattern-japanese{{ else }}pattern-english{{ end }}">
+            {{ if eq (mod $row 2) 0 }}
+              <span lang="ja">し</span><span lang="ja">り</span><span lang="ja">と</span><span lang="ja">り</span>
+            {{ else }}
+              <span lang="en">shi</span><span lang="en">ri</span><span lang="en">to</span><span lang="en">ri</span>
+            {{ end }}
+          </div>
+        {{ end }}
+      </div>
+    {{ end }}
+  </div>
+  <div class="intro-content">
+    <h1>pickle jam</h1>
+    <p class="title-subheading">a shiritori conversation</p>
+  </div>
+</section>

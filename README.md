@@ -37,9 +37,40 @@ Shingo Ne Koyama is an artist who has undertaken a decade-long linguistic inquir
 
 Anushka Trivedi / opheliagame, is a brahmin-born woman technologist turned visual artist and live coder, currently based in Japan. In her work and life, she explores what it means to make things - sketches, zines, poems, archives, software tools and handmade websites - with code. As a co-organizer of CCSanté - a monthly creative coding meetup, she is a part of a vibrant community of creative coders and makers from India.
 
-## Current Technical Specification
+## Site Sections
+
+The homepage is a single scrolling page, assembled by [`layouts/_default/list.html`](layouts/_default/list.html) in this order:
+
+### Opening Title
+
+[`layouts/partials/title-page.html`](layouts/partials/title-page.html) displays "Pickle Jam" with the subtitle "A Shiritori Conversation." Its background uses alternating Japanese and English grid rows moving in opposite directions. Animation is disabled for reduced-motion preferences.
+
+### Introduction
+
+The Markdown body in [`content/_index.md`](content/_index.md) supplies the introduction. Hugo groups rendered paragraphs, including image-only paragraphs, into pairs at build time. Each pair is a two-column section on desktop and stacks vertically on mobile.
+
+### Conversation
+
+Messages in [`content/messages/`](content/messages/) appear chronologically, two per section. Images are stored in [`content/messages/images/`](content/messages/images/).
+
+Each message has a colored metadata strip with its date at the top, bilingual location in the middle, and sender name at the bottom. Strips sit on the outer edges on desktop and on the right on mobile. Message text is centered and styled separately from introduction paragraphs.
+
+### Artist Biographies
+
+[`layouts/partials/biographies.html`](layouts/partials/biographies.html) renders the `biographies` front matter from [`content/_index.md`](content/_index.md). Nekoyama's section places text before his portrait; opheliagame's places her portrait before the text. Portraits are stored in [`assets/images/`](assets/images/).
+
+### Closing Title
+
+The closing section reuses the opening title partial.
+
+## Styling
+
+- [`assets/scss/style.scss`](assets/scss/style.scss) defines layout, spacing, typography, and animation.
+- [`assets/css/colors.css`](assets/css/colors.css) defines the shared palette and light/dark theme colors.
+- [`layouts/partials/meta.html`](layouts/partials/meta.html) loads M PLUS Rounded 1c. Japanese and English use regular weight.
+
+## Technical Specification
 
 - **Base Technology:** Hugo Static Site Generator.
 - **Content Management:** All narratives and information are stored in the `content/` directory.
-- **Homepage:** The main narrative/introduction is found in `content/_index.md`.
 - **Deployment Target:** Builds into static HTML, CSS, and JavaScript files optimized for hosting on platforms like GitHub Pages.

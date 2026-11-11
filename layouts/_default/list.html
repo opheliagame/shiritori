@@ -1,46 +1,81 @@
 {{ define "page" }}
-  <div id="page-container">
-    <div lang="en" id="about-container">
-      {{ .Content }}
+  <main id="site-root">
+    {{ partial "title-page.html" "opening" }}
+
+    {{ $paragraphs := findRE `(?s)<p(?:\s[^>]*)?>.*?</p>` .Content }}
+    <div class="intro-pages">
+      {{ range $index, $paragraph := $paragraphs }}
+        {{ if eq (mod $index 2) 0 }}
+          <section class="content-page" aria-label="Introduction page {{ add (div $index 2) 1 }}">
+        {{ end }}
+            <div class="content-page-item">
+              {{ $paragraph | safeHTML }}
+            </div>
+        {{ if or (eq (mod $index 2) 1) (eq $index (sub (len $paragraphs) 1)) }}
+          </section>
+        {{ end }}
+      {{ end }}
     </div>
 
-    {{ range .Site.RegularPages.GroupByDate "2006" "asc" }}
-      {{ $year := .Key }}
-      <div id="{{ $year | anchorize }}" class="year-container">
-        {{ range .Pages.GroupByDate "January" "asc" }}
-          {{ $month := .Key }}
-          <div
-            id="{{ $year | anchorize }}-{{ $month | anchorize }}"
-            class="month-container"
-          >
-            {{ range .Pages }}
-              {{ $sender_class_name := index .Params "sender-name" }}
-              <div
-                id="{{ .File.BaseFileName | anchorize }}"
-                class="message-container"
-                data-sender-name="{{ $sender_class_name }}"
-              >
-                <div class="message-header">
-                  <p>
-                    {{ index .Params "sender-name" }}
-                  </p>
-                  <p>
-                    {{ .Params.date | time.Format ":date_medium" }}
-                  </p>
-                </div>
-
-                <div class="message-content">
-                  {{ with . }}
-                    {{ .Content }}
+    {{ $messages := .Site.RegularPages.ByDate }}
+    {{ $lastMessageIndex := sub (len $messages) 1 }}
+    {{ range $index, $message := $messages }}
+      {{ $sender := index $message.Params "sender-name" }}
+      {{ if eq (mod $index 2) 0 }}
+        <section class="full-viewport message-segment">
+          <div class="message-spread">
+      {{ end }}
+            <article
+              class="message-body"
+              data-sender-name="{{ index $message.Params "sender-name" }}"
+            >
+              <div class="message-metadata">
+                <time
+                  class="date"
+                  datetime="{{ $message.Date.Format "2006-01-02T15:04:05Z07:00" }}"
+                  aria-label="{{ $message.Date | time.Format ":date_medium" }}"
+                >
+                  <span>{{ $message.Date.Format "06" }} /<br />{{ $message.Date.Format "01" }} /<br />{{ $message.Date.Format "02" }}</span>
+                </time>
+                {{ with $message.Params.location }}
+                  <p class="location">{{ . }}</p>
+                {{ else }}
+                  {{ if eq $sender "Anushka Trivedi" }}
+                    <p class="location">
+                      <span lang="ja">日本　東京</span>
+                      <span lang="en">Japan Tokyo</span>
+                    </p>
+                  {{ else if eq $sender "Shingo Ne KOYAMA" }}
+                    <p class="location">
+                      <span lang="en">India Mumbai</span>
+                      <span lang="ja">インド　ムンバイ</span>
+                    </p>
                   {{ end }}
+                {{ end }}
+                <div class="message-person">
+                  <p class="sender-name">
+                    {{- if eq $sender "Shingo Ne KOYAMA" -}}
+                      neko<br />yama
+                    {{- else if eq $sender "Anushka Trivedi" -}}
+                      ophelia<br />game
+                    {{- else -}}
+                      {{ $sender }}
+                    {{- end -}}
+                  </p>
+                  {{ with $message.Params.photographer }}<p>Photographer: {{ . }}</p>{{ end }}
                 </div>
               </div>
-            {{ end }}
+              <div class="message-content">
+                {{ $message.Content }}
+              </div>
+            </article>
+      {{ if or (eq (mod $index 2) 1) (eq $index $lastMessageIndex) }}
           </div>
-        {{ end }}
-
-      </div>
+        </section>
+      {{ end }}
     {{ end }}
+    {{ partial "biographies.html" . }}
+    {{ partial "title-page.html" "closing" }}
+  </main>
 
-  </div>
 {{ end }}

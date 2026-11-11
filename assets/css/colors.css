@@ -1,3 +1,21 @@
+:root {
+  --red: #ed6b62;
+  --yellow: #dfae24;
+  --green: #85d793;
+  --blue: #5cb4d8;
+  --title-red: var(--red);
+  --title-yellow: var(--yellow);
+  --title-green: var(--green);
+  --title-blue: var(--blue);
+  --background-light: #fff;
+  --background-dark: #1c1a16;
+  --message-background: var(--light);
+  --message-date: #ef766f;
+  --message-location-japan: #119dce;
+  --message-location-india: #c89b00;
+  --message-person: #42d85b;
+}
+
 .darkmode {
   width: 20px;
   height: 20px;
