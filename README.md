@@ -74,3 +74,11 @@ The closing section reuses the opening title partial.
 - **Base Technology:** Hugo Static Site Generator.
 - **Content Management:** All narratives and information are stored in the `content/` directory.
 - **Deployment Target:** Builds into static HTML, CSS, and JavaScript files optimized for hosting on platforms like GitHub Pages.
+
+## Usage
+
+```
+$ brew install hugo
+$ hugo version
+$ hugo server
+```
